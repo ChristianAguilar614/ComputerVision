@@ -2,7 +2,6 @@
     CONSOLE APPLICATION : ComputerVision_0.1 Project Overview
 ========================================================================
 
-AppWizard has created this ComputerVision_0.1 application for you.
 
 This file contains a summary of what you will find in each of the files that
 make up your ComputerVision_0.1 application.
@@ -22,7 +21,11 @@ ComputerVision_0.1.vcxproj.filters
     "Source Files" filter).
 
 ComputerVision_0.1.cpp
-    This is the main application source file.
+    Defines the entry point for the console application. To test stereoscopic vision using 
+	open source software (openCV). This program should define a basic principle of the 
+	functionality of two cameras to find distance of any object. To perform this task, a 
+	stictched up map displaying distances of every pixle will be generated that can then be 
+	scanned for particular patterns.
 
 /////////////////////////////////////////////////////////////////////////////
 Other standard files:
