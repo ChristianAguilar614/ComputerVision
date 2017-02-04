@@ -4,37 +4,74 @@
 //							for particular patterns.
 //
 // Version 0.1
-// Christian Aguilar
+// Christian Aguilar & Justin Oroz
 
 #include <iostream>
-#include "stdafx.h"
+#include "stdafx.h" //windows only
 #include <stdio.h>
 
-#include "opencv2\opencv.hpp"
-#include "opencv2\highgui\highgui.hpp"
-#include "opencv2\objdetect\objdetect.hpp"
+#include "opencv2/opencv.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/objdetect/objdetect.hpp"
+
 
 using namespace cv;
+using namespace std;
 
 int main(int, char**)
 {
-	VideoCapture cam(0); // open Camera #1
-						 //VideoCapture cam2(1);// open Camera #2
-	if (!cam.isOpened()) return 1;
-	//if(!cam2.isOpened()) return 1;
+	const int cameraCount = 2;
 
-	Mat edges;
-	Mat3b frame0;
+	VideoCapture cam[cameraCount];
+
+	for (int i = 0; i < cameraCount; i++) {
+		cam[i] = VideoCapture(i);
+
+		// set video capture properties for camera, forcing standard definition
+		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 480);
+		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 640);
+	}
+
+	VideoCapture camL = cam[0]; // open Camera #1
+	VideoCapture camR = cam[1];// open Camera #2
+
+							   //Ptr<StereoBM> createStereoBM(int numDisparities=0, int blockSize=21);
+
+	Ptr<StereoBM> sbm = StereoBM::create(16, 7);
+
+
+	if (!camL.isOpened())
+	{
+		cerr << "***Could not initialize capturing...***\n";
+		cerr << "Current parameter's value: \n";
+		return -1;
+	}
+
+
+	Mat edges, disparity, ImageL, ImageR;
 	for (;;)
 	{
-		cam >> frame0;
-		cvtColor(frame0, edges, CV_BGR2GRAY); //to Gray image
-		GaussianBlur(edges, edges, Size(3, 3), 1.5, 1.5); //Reduce noise
+		camL >> ImageL;
+		camR >> ImageR;
+
+		if (ImageL.empty() || ImageR.empty()) {
+			cerr << "a frame is empty" << endl;
+			break;
+		}
+
+		cvtColor(ImageL, ImageL, CV_BGR2GRAY); //to Gray image
+		cvtColor(ImageR, ImageR, CV_BGR2GRAY); //to Gray image
+
+		sbm->compute(ImageL, ImageR, disparity);
+
+
+		GaussianBlur(ImageL, edges, Size(3, 3), 1.5, 1.5); //Reduce noise
 		Canny(edges, edges, 10, 70, 3); //Find edges and ommit everything else
-		
-		//show both raw and edges
+
+										//show both raw and edges
 		imshow("Edges", edges);
-		imshow("Raw", frame0);
+		imshow("Raw", ImageL);
+		imshow("Disparity", disparity);
 
 		if (waitKey(30) >= 'q') break; //quit when 'q' is pressed
 	}
