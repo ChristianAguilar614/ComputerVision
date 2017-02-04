@@ -20,15 +20,27 @@ using namespace std;
 
 int main(int, char**)
 {
+	const int cameraCount = 2;
 
-	VideoCapture cam(0); // open Camera #1
-	//VideoCapture cam2(1);// open Camera #2
+	VideoCapture cam[cameraCount];
 
-	// set video capture properties for MacBook' iSight camera
-	cam.set(CV_CAP_PROP_FRAME_WIDTH, 500);
-	cam.set(CV_CAP_PROP_FRAME_HEIGHT, 600);
+	for (int i = 0; i < cameraCount; i++) {
+		cam[i] = VideoCapture(i);
 
-	if( !cam.isOpened() )
+		// set video capture properties for camera, forcing lower res
+		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 500);
+		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 600);
+	}
+
+	VideoCapture camL = cam[0]; // open Camera #1
+	VideoCapture camR = cam[1];// open Camera #2
+
+		//Ptr<StereoBM> createStereoBM(int numDisparities=0, int blockSize=21);
+
+	Ptr<StereoBM> sbm = StereoBM::create(16, 7);
+
+
+	if( !camL.isOpened() )
 	{
 		cerr << "***Could not initialize capturing...***\n";
 		cerr << "Current parameter's value: \n";
@@ -36,25 +48,30 @@ int main(int, char**)
 	}
 
 
-	Mat edges;
-	Mat3b frame0;
+	Mat edges,disparity, ImageL, ImageR;
 	for (;;)
 	{
-		cam >> frame0;
+		camL >> ImageL;
+		camR >> ImageR;
 
-		if(frame0.empty()){
-			cerr << "frame is empty" << endl;
+		if(ImageL.empty() || ImageR.empty()){
+			cerr << "a frame is empty" << endl;
 			break;
 		}
 
+		cvtColor(ImageL, ImageL, CV_BGR2GRAY); //to Gray image
+		cvtColor(ImageR, ImageR, CV_BGR2GRAY); //to Gray image
 
-		cvtColor(frame0, edges, CV_BGR2GRAY); //to Gray image
-		GaussianBlur(edges, edges, Size(3, 3), 1.5, 1.5); //Reduce noise
+		sbm->compute(ImageL, ImageR, disparity);
+
+
+		GaussianBlur(ImageL, edges, Size(3, 3), 1.5, 1.5); //Reduce noise
 		Canny(edges, edges, 10, 70, 3); //Find edges and ommit everything else
 
 		//show both raw and edges
 		imshow("Edges", edges);
-		imshow("Raw", frame0);
+		imshow("Raw", ImageL);
+		imshow("Disparity",disparity);
 
 		if (waitKey(30) >= 'q') break; //quit when 'q' is pressed
 	}
