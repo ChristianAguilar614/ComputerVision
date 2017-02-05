@@ -7,7 +7,7 @@
 // Christian Aguilar
 
 #include <iostream>
-	//#include "stdafx.h"
+
 #include <stdio.h>
 
 #include "opencv2/opencv.hpp"
