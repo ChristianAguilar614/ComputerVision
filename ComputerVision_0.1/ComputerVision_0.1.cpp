@@ -28,8 +28,8 @@ int main(int, char**)
 		cam[i] = VideoCapture(i);
 
 		// set video capture properties for camera, forcing standard definition
-		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 480);
-		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 640);
+		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 640);
+		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 480);
 	}
 
 	VideoCapture camL = cam[0]; // open Camera #1
@@ -38,7 +38,7 @@ int main(int, char**)
 							   //Ptr<StereoBM> createStereoBM(int numDisparities=0, int blockSize=21);
 
 	Ptr<StereoBM> sbm = StereoBM::create(16, 7);
-
+	//sbm->create(16, 7);
 
 	if (!camL.isOpened())
 	{
@@ -47,7 +47,7 @@ int main(int, char**)
 		return -1;
 	}
 
-
+	//Declare 
 	Mat edges, disparity, ImageL, ImageR;
 	for (;;)
 	{
