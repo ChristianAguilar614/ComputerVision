@@ -23,19 +23,20 @@ int main(int, char**)
 	const int cameraCount = 2;
 
 	VideoCapture cam[cameraCount];
-
-	for (int i = 0; i < cameraCount; i++) {
-		cam[i] = VideoCapture(i);
+	for (int i = 0; i < cameraCount; i++) { //initializes two non internal cameras
+		cam[i] = VideoCapture(i+1);
 
 		// set video capture properties for camera, forcing lower res
-		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 500);
-		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 600);
+		cam[i].set(CV_CAP_PROP_FRAME_WIDTH, 640);
+		cam[i].set(CV_CAP_PROP_FRAME_HEIGHT, 480);
 	}
+
 
 	VideoCapture camL = cam[0]; // open Camera #1
 	VideoCapture camR = cam[1];// open Camera #2
 
-		//Ptr<StereoBM> createStereoBM(int numDisparities=0, int blockSize=21);
+
+	Ptr<StereoBM> createStereoBM(int numDisparities=0, int blockSize=21);
 
 	Ptr<StereoBM> sbm = StereoBM::create(16, 7);
 
