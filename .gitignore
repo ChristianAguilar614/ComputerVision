@@ -245,3 +245,5 @@ ModelManifest.xml
 *.DS_Store
 
 ComputerVision_0.1.xcodeproj/xcuserdata/*
+
+.DS_Store
