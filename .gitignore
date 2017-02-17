@@ -240,3 +240,10 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+*.xcuserstate
+*.DS_Store
+
+ComputerVision_0.1.xcodeproj/xcuserdata/*
+
+.DS_Store
