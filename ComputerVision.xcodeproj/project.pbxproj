@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0A7A1181E3FD9E100A9D6CA /* ComputerVision_0.1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0A7A1131E3FD9E100A9D6CA /* ComputerVision_0.1.cpp */; };
-		D0A7A11B1E3FDA3200A9D6CA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D0A7A11A1E3FDA3200A9D6CA /* README.md */; };
+		D021A4771E56E1C500C42399 /* ComputerVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D021A4761E56E1C500C42399 /* ComputerVision.cpp */; };
+		D021A4821E56E27100C42399 /* testImages in CopyFiles */ = {isa = PBXBuildFile; fileRef = D021A4811E56E26B00C42399 /* testImages */; };
 		D0F0FA1F1E456780004132EC /* libopencv_aruco.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D01637471E45598C002DCA39 /* libopencv_aruco.3.2.0.dylib */; };
 		D0F0FA201E456780004132EC /* libopencv_bgsegm.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D01637481E45598C002DCA39 /* libopencv_bgsegm.3.2.0.dylib */; };
 		D0F0FA211E456780004132EC /* libopencv_bioinspired.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D016374D1E45598C002DCA39 /* libopencv_bioinspired.3.2.0.dylib */; };
@@ -50,23 +50,16 @@
 		D0F0FA451E456780004132EC /* libopencv_ximgproc.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D01637B91E45598D002DCA39 /* libopencv_ximgproc.3.2.0.dylib */; };
 		D0F0FA461E456780004132EC /* libopencv_xobjdetect.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D01637BA1E45598D002DCA39 /* libopencv_xobjdetect.3.2.0.dylib */; };
 		D0F0FA471E456780004132EC /* libopencv_xphoto.3.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D01637BE1E45598D002DCA39 /* libopencv_xphoto.3.2.0.dylib */; };
-		D0FAE06E1E563B23009D329F /* ambush_5_left.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FAE0681E5635CC009D329F /* ambush_5_left.jpg */; };
-		D0FAE06F1E563B23009D329F /* ambush_5_right.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FAE0691E5635CC009D329F /* ambush_5_right.jpg */; };
-		D0FAE0711E563B23009D329F /* chair_right.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FAE06B1E5635CC009D329F /* chair_right.jpg */; };
-		D0FAE0731E563B6E009D329F /* chair_left.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FAE0721E563B65009D329F /* chair_left.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D0A7A1071E3FD9B900A9D6CA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = testImages;
+			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				D0FAE0731E563B6E009D329F /* chair_left.jpg in CopyFiles */,
-				D0FAE06E1E563B23009D329F /* ambush_5_left.jpg in CopyFiles */,
-				D0FAE06F1E563B23009D329F /* ambush_5_right.jpg in CopyFiles */,
-				D0FAE0711E563B23009D329F /* chair_right.jpg in CopyFiles */,
+				D021A4821E56E27100C42399 /* testImages in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,14 +191,11 @@
 		D01637BF1E45598D002DCA39 /* libopencv_xphoto.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_xphoto.3.2.0.dylib; path = "../../../../../usr/local/Cellar/opencv3/HEAD-a2fed4c/lib/libopencv_xphoto.3.2.0.dylib"; sourceTree = "<group>"; };
 		D01637C01E45598D002DCA39 /* pkgconfig */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pkgconfig; path = "../../../../../usr/local/Cellar/opencv3/HEAD-a2fed4c/lib/pkgconfig"; sourceTree = "<group>"; };
 		D01637C11E45598D002DCA39 /* python2.7 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = python2.7; path = "../../../../../usr/local/Cellar/opencv3/HEAD-a2fed4c/lib/python2.7"; sourceTree = "<group>"; };
-		D0A7A1091E3FD9B900A9D6CA /* ComputerVision_0.1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ComputerVision_0.1; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0A7A1131E3FD9E100A9D6CA /* ComputerVision_0.1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComputerVision_0.1.cpp; path = ../../../../../../../../Cloud/Git/ComputerVision_0.1/ComputerVision_0.1/ComputerVision_0.1.cpp; sourceTree = BUILT_PRODUCTS_DIR; };
+		D021A4761E56E1C500C42399 /* ComputerVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComputerVision.cpp; path = ComputerVision/ComputerVision.cpp; sourceTree = "<group>"; };
+		D021A4811E56E26B00C42399 /* testImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testImages; sourceTree = "<group>"; };
+		D0A7A1091E3FD9B900A9D6CA /* ComputerVision */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ComputerVision; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A7A11A1E3FDA3200A9D6CA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D0F0F9A01E456703004132EC /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = "../../../../../usr/local/Cellar/opencv3/HEAD-a2fed4c/lib"; sourceTree = "<group>"; };
-		D0FAE0681E5635CC009D329F /* ambush_5_left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ambush_5_left.jpg; path = testImages/ambush_5_left.jpg; sourceTree = "<group>"; };
-		D0FAE0691E5635CC009D329F /* ambush_5_right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ambush_5_right.jpg; path = testImages/ambush_5_right.jpg; sourceTree = "<group>"; };
-		D0FAE06B1E5635CC009D329F /* chair_right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chair_right.jpg; path = testImages/chair_right.jpg; sourceTree = "<group>"; };
-		D0FAE0721E563B65009D329F /* chair_left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chair_left.jpg; path = testImages/chair_left.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,23 +383,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0958A851E539B20004D3E83 /* Test Images */ = {
+		D021A4751E56E1BA00C42399 /* ComputerVision */ = {
 			isa = PBXGroup;
 			children = (
-				D0FAE0681E5635CC009D329F /* ambush_5_left.jpg */,
-				D0FAE0691E5635CC009D329F /* ambush_5_right.jpg */,
-				D0FAE0721E563B65009D329F /* chair_left.jpg */,
-				D0FAE06B1E5635CC009D329F /* chair_right.jpg */,
+				D021A4761E56E1C500C42399 /* ComputerVision.cpp */,
 			);
-			name = "Test Images";
-			path = ..;
+			name = ComputerVision;
 			sourceTree = "<group>";
 		};
 		D0A7A1001E3FD9B900A9D6CA = {
 			isa = PBXGroup;
 			children = (
+				D021A4751E56E1BA00C42399 /* ComputerVision */,
+				D021A4811E56E26B00C42399 /* testImages */,
 				D0A7A11A1E3FDA3200A9D6CA /* README.md */,
-				D0A7A10B1E3FD9B900A9D6CA /* ComputerVision_0.1 */,
 				D0A7A10A1E3FD9B900A9D6CA /* Products */,
 				D01637441E45598C002DCA39 /* Frameworks */,
 			);
@@ -418,26 +405,17 @@
 		D0A7A10A1E3FD9B900A9D6CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0A7A1091E3FD9B900A9D6CA /* ComputerVision_0.1 */,
+				D0A7A1091E3FD9B900A9D6CA /* ComputerVision */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D0A7A10B1E3FD9B900A9D6CA /* ComputerVision_0.1 */ = {
-			isa = PBXGroup;
-			children = (
-				D0A7A1131E3FD9E100A9D6CA /* ComputerVision_0.1.cpp */,
-				D0958A851E539B20004D3E83 /* Test Images */,
-			);
-			path = ComputerVision_0.1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0A7A1081E3FD9B900A9D6CA /* ComputerVision_0.1 */ = {
+		D0A7A1081E3FD9B900A9D6CA /* ComputerVision */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0A7A1101E3FD9B900A9D6CA /* Build configuration list for PBXNativeTarget "ComputerVision_0.1" */;
+			buildConfigurationList = D0A7A1101E3FD9B900A9D6CA /* Build configuration list for PBXNativeTarget "ComputerVision" */;
 			buildPhases = (
 				D0A7A1051E3FD9B900A9D6CA /* Sources */,
 				D0A7A1061E3FD9B900A9D6CA /* Frameworks */,
@@ -447,9 +425,9 @@
 			);
 			dependencies = (
 			);
-			name = ComputerVision_0.1;
+			name = ComputerVision;
 			productName = ComputerVision_0.1;
-			productReference = D0A7A1091E3FD9B900A9D6CA /* ComputerVision_0.1 */;
+			productReference = D0A7A1091E3FD9B900A9D6CA /* ComputerVision */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -468,7 +446,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0A7A1041E3FD9B900A9D6CA /* Build configuration list for PBXProject "ComputerVision_0.1" */;
+			buildConfigurationList = D0A7A1041E3FD9B900A9D6CA /* Build configuration list for PBXProject "ComputerVision" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -480,7 +458,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0A7A1081E3FD9B900A9D6CA /* ComputerVision_0.1 */,
+				D0A7A1081E3FD9B900A9D6CA /* ComputerVision */,
 			);
 		};
 /* End PBXProject section */
@@ -490,8 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A7A11B1E3FDA3200A9D6CA /* README.md in Sources */,
-				D0A7A1181E3FD9E100A9D6CA /* ComputerVision_0.1.cpp in Sources */,
+				D021A4771E56E1C500C42399 /* ComputerVision.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,7 +589,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0A7A1041E3FD9B900A9D6CA /* Build configuration list for PBXProject "ComputerVision_0.1" */ = {
+		D0A7A1041E3FD9B900A9D6CA /* Build configuration list for PBXProject "ComputerVision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0A7A10E1E3FD9B900A9D6CA /* Debug */,
@@ -621,7 +598,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0A7A1101E3FD9B900A9D6CA /* Build configuration list for PBXNativeTarget "ComputerVision_0.1" */ = {
+		D0A7A1101E3FD9B900A9D6CA /* Build configuration list for PBXNativeTarget "ComputerVision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0A7A1111E3FD9B900A9D6CA /* Debug */,

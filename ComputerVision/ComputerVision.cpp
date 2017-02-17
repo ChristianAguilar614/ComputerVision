@@ -3,11 +3,11 @@
 //							perform this task, a stictched up map displaying distances of every pixle will be generated that can then be scanned
 //							for particular patterns.
 //
-// Version 0.1
+// Version 0.2
 // Christian Aguilar
+// Justin Oroz
 
 #include <iostream>
-	//#include "stdafx.h"
 #include <stdio.h>
 
 #include "opencv2/opencv.hpp"
@@ -19,15 +19,6 @@
 using namespace cv;
 using namespace std;
 using namespace ximgproc;
-
-static float getMaxDisparity( VideoCapture& capture ) {
-		//TODO: Calculate maxDisp
-	float maxDisp;
-
-
-
-	return maxDisp;
-}
 
 const int cameraCount = 0; //set to 0 to use images
 string leftImagePath = "testImages/chair_left.jpg";
@@ -60,22 +51,20 @@ int main(int, char**)
 	}
 
 
-	float maxDisp = getMaxDisparity(camL);
-	maxDisp = 48;
-	int max_disp =  roundf(maxDisp);
+	int maxDisp = 48; // TODO: - Max Disparity calculations
 
-	max_disp/=2;
-	if(max_disp%16!=0)
-		max_disp += 16-(max_disp%16);
+	maxDisp/=2;
+	if(maxDisp%16!=0)
+		maxDisp += 16-(maxDisp%16);
 
-	Ptr<StereoBM> sbm = StereoBM::create(max_disp, 21);
+	Ptr<StereoBM> sbm = StereoBM::create(maxDisp, 21); // TODO: - Modify block size
 
 		// code from example: http://docs.opencv.org/trunk/d3/d14/tutorial_ximgproc_disparity_filtering.html
 	Ptr<DisparityWLSFilter> wls_filter = createDisparityWLSFilter(sbm);
 	Ptr<StereoMatcher> right_matcher = createRightMatcher(sbm);
 
 
-	Mat edges,disparity, colorized, imageL, imageR, dispL, dispR, filteredDisp, dispVisRaw, dispVisFiltered;
+	Mat imageL, imageR, dispL, dispR, filteredDisp, dispVisRaw, dispVisFiltered;
 
 		//Filter Parameters
 		//http://docs.opencv.org/trunk/d9/d51/classcv_1_1ximgproc_1_1DisparityWLSFilter.html
@@ -84,11 +73,14 @@ int main(int, char**)
 	for (;;)
 	{
 
-			//for speed and ensuring time difference is minimal grab both frames
-		camL.grab();
-		camR.grab();
+
 
 		if (cameraCount != 0) {
+
+				//for speed and ensuring time difference is minimal grab both frames
+			camL.grab();
+			camR.grab();
+
 				//retreive after both captures
 			if ( !camL.retrieve(imageL)) {
 				cerr << "Left Frame failed to grab a frame" << endl;
@@ -122,22 +114,17 @@ int main(int, char**)
 		cvtColor(imageR, imageR, CV_BGR2GRAY); //to Gray image
 
 
-			// Match Images
+			// Match Images - Move to function?
 		double matching_time = (double)getTickCount();
 		sbm-> compute(imageL, imageR, dispL);
 		right_matcher->compute(imageR, imageL, dispR);
 		matching_time = ((double)getTickCount() - matching_time)/getTickFrequency();
-
 
 		wls_filter->setLambda(lambda);
 		wls_filter->setSigmaColor(sigma);
 		double filtering_time = (double)getTickCount();
 		wls_filter->filter(dispL,imageL,filteredDisp,dispR);
 		filtering_time = ((double)getTickCount() - filtering_time)/getTickFrequency();
-
-
-			//GaussianBlur(imageL, edges, Size(3, 3), 1.5, 1.5); //Reduce noise
-			//Canny(edges, edges, 10, 70, 3); //Find edges and ommit everything else
 
 		//show both raw and edges
 		imshow("RawL", imageL);
