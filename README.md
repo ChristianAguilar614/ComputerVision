@@ -6,8 +6,8 @@ Preliminary Upload for computer vision using OpenCV
   distance of any object. To perform this task, a stictched up map displaying distances of 
   every pixle will be generated that can then be scanned for particular patterns.
 
-# Development Branch
-  This branch is where the magic happens. Testing and implementation of new features occur here using an Xcode C++ environement. After testing the code is merged into master and modified for the final Linux environment and hardware.
+# Master Branch
+  This branch is where the final implementation occurs. Testing and implementation of new features occur in Development Branch using an Xcode C++ environement. After testing the code is merged into master and modified for the final Linux environment and hardware.
 
   Master is to be a "ready to run" C++ executable for our Linux environment
 
