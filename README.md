@@ -1,4 +1,4 @@
-# ComputerVision_0.1
+# ComputerVision
 Preliminary Upload for computer vision using OpenCV
 
   This program is to eventually test stereoscopic vision using open source software (openCV). 
@@ -6,13 +6,11 @@ Preliminary Upload for computer vision using OpenCV
   distance of any object. To perform this task, a stictched up map displaying distances of 
   every pixle will be generated that can then be scanned for particular patterns.
 
-# Branches
-  Currently branches are diveded by the development environment in which source code was
-  created. Not much changes between the existing branches with the execption of the 'Master'
-  branch. Visual Studio 2015, XCode and Eclipse are currently being used. 
+# Development Branch
+  This branch is where the magic happens. Testing and implementation of new features occur here using an Xcode C++ environement. After testing the code is merged into master and modified for the final Linux environment and hardware.
 
-  Master is to be a "ready to run" c++ executable for our Linux environment
+  Master is to be a "ready to run" C++ executable for our Linux environment
 
 # Installation
-  'Clone' the appropriate branch for your IDE
+  'Clone' the appropriate branch
   'Mod' source code and then push updates to online reposity/branch
