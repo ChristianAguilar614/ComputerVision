@@ -1,4 +1,4 @@
-# ComputerVision_0.1
+# ComputerVision
 Preliminary Upload for computer vision using OpenCV
 
   This program is to eventually test stereoscopic vision using open source software (openCV). 

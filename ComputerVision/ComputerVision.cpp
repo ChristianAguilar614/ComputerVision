@@ -1,4 +1,4 @@
-// ComputerVision_0.1.cpp : Defines the entry point for the console application. To test stereoscopic vision using open source software (openCV)
+// ComputerVision.cpp : Defines the entry point for the console application. To test stereoscopic vision using open source software (openCV)
 //							This program should define a basic principle of the functionality of two cameras to find distance of any object. To
 //							perform this task, a stictched up map displaying distances of every pixle will be generated that can then be scanned
 //							for particular patterns.
