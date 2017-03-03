@@ -247,3 +247,5 @@ ModelManifest.xml
 ComputerVision_0.1.xcodeproj/xcuserdata/*
 
 .DS_Store
+
+*.xcbkptlist

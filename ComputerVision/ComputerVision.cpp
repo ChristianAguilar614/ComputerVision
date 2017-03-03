@@ -20,7 +20,7 @@ using namespace cv;
 using namespace std;
 using namespace ximgproc;
 
-const int cameraCount = 0; //set to 0 to use images
+const int cameraCount = 3; //set to 0 to use images
 string leftImagePath = "testImages/chair_left.jpg";
 string rightImagePath = "testImages/chair_right.jpg";
 
@@ -28,6 +28,7 @@ string rightImagePath = "testImages/chair_right.jpg";
 int main(int, char**)
 {
 	VideoCapture cam[cameraCount];
+
 
 	for (int i = 0; i < cameraCount; i++) {
 		cam[i] = VideoCapture(i);
@@ -59,16 +60,19 @@ int main(int, char**)
 
 	Ptr<StereoBM> sbm = StereoBM::create(maxDisp, 21); // TODO: - Modify block size
 
+
 		// code from example: http://docs.opencv.org/trunk/d3/d14/tutorial_ximgproc_disparity_filtering.html
 	Ptr<DisparityWLSFilter> wls_filter = createDisparityWLSFilter(sbm);
 	Ptr<StereoMatcher> right_matcher = createRightMatcher(sbm);
-
 
 	Mat imageL, imageR, dispL, dispR, filteredDisp, dispVisRaw, dispVisFiltered;
 
 		//Filter Parameters
 		//http://docs.opencv.org/trunk/d9/d51/classcv_1_1ximgproc_1_1DisparityWLSFilter.html
 	double lambda = 8000, sigma = 2.0;
+
+	double frame_time = (double)getTickCount();;
+	int frameCounter = 0;
 
 	for (;;)
 	{
@@ -77,9 +81,26 @@ int main(int, char**)
 
 		if (cameraCount != 0) {
 
+			frameCounter++;
+
+			if (frameCounter == 30) {
+				frameCounter = 0;
+				frame_time = ((double)getTickCount() - frame_time)/getTickFrequency();
+
+					//30 frames / (s)
+				cout << "FPS: " << 30.0/frame_time << endl;
+
+				frame_time = (double)getTickCount();
+
+			}
+
+
+
+
 				//for speed and ensuring time difference is minimal grab both frames
 			camL.grab();
 			camR.grab();
+
 
 				//retreive after both captures
 			if ( !camL.retrieve(imageL)) {
@@ -102,14 +123,10 @@ int main(int, char**)
 				return -1;
 			}
 
-
-				//resize(imageL ,imageL ,Size(),0.5,0.5);
-				//resize(imageR,imageR,Size(),0.5,0.5);
 		}
 
-
-
-
+			//resize(imageL ,imageL ,Size(),0.5,0.5);
+			//resize(imageR,imageR,Size(),0.5,0.5);
 		cvtColor(imageL, imageL, CV_BGR2GRAY); //to Gray image
 		cvtColor(imageR, imageR, CV_BGR2GRAY); //to Gray image
 
@@ -129,10 +146,13 @@ int main(int, char**)
 		//show both raw and edges
 		imshow("RawL", imageL);
 		imshow("RawR", imageR);
-		getDisparityVis(dispL, dispVisRaw);
+		getDisparityVis(dispL, dispVisRaw, 3);
 		imshow("raw disparity", dispVisRaw);
-		getDisparityVis(filteredDisp, dispVisFiltered);
+		getDisparityVis(filteredDisp, dispVisFiltered, 3);
 		imshow("filtered disparity", dispVisFiltered);
+
+
+
 
 		if (waitKey(30) >= 'q') break; //quit when 'q' is pressed
 	}
