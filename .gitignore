@@ -249,3 +249,7 @@ ComputerVision_0.1.xcodeproj/xcuserdata/*
 .DS_Store
 
 *.xcbkptlist
+/.ptp-sync/
+
+
+ComputerVision.xcodeproj/project.xcworkspace/xcuserdata/*
